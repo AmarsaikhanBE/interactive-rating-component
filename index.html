@@ -161,60 +161,30 @@
         </div>
         <h1>How did we do?</h1>
         <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
-        <div class="flex">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-        </div>
+        <div class="flex"></div>
         <button type="button" id="submit">Submit</button>
     </div>
     <script>
-        let rate = 0
-        document.querySelector('.flex :nth-child(1)').addEventListener('click', () => {
-            document.querySelector('.flex :nth-child(1)').className = 'selected'
-            document.querySelector('.flex :nth-child(2)').className = ''
-            document.querySelector('.flex :nth-child(3)').className = ''
-            document.querySelector('.flex :nth-child(4)').className = ''
-            document.querySelector('.flex :nth-child(5)').className = ''
-            rate = 1
-        })
-        document.querySelector('.flex :nth-child(2)').addEventListener('click', () => {
-            document.querySelector('.flex :nth-child(2)').className = 'selected'
-            document.querySelector('.flex :nth-child(1)').className = ''
-            document.querySelector('.flex :nth-child(3)').className = ''
-            document.querySelector('.flex :nth-child(4)').className = ''
-            document.querySelector('.flex :nth-child(5)').className = ''
-            rate = 2
-        })
-        document.querySelector('.flex :nth-child(3)').addEventListener('click', () => {
-            document.querySelector('.flex :nth-child(3)').className = 'selected'
-            document.querySelector('.flex :nth-child(2)').className = ''
-            document.querySelector('.flex :nth-child(1)').className = ''
-            document.querySelector('.flex :nth-child(4)').className = ''
-            document.querySelector('.flex :nth-child(5)').className = ''
-            rate = 3
-        })
-        document.querySelector('.flex :nth-child(4)').addEventListener('click', () => {
-            document.querySelector('.flex :nth-child(4)').className = 'selected'
-            document.querySelector('.flex :nth-child(2)').className = ''
-            document.querySelector('.flex :nth-child(3)').className = ''
-            document.querySelector('.flex :nth-child(1)').className = ''
-            document.querySelector('.flex :nth-child(5)').className = ''
-            rate = 4
-        })
-        document.querySelector('.flex :nth-child(5)').addEventListener('click', () => {
-            document.querySelector('.flex :nth-child(5)').className = 'selected'
-            document.querySelector('.flex :nth-child(2)').className = ''
-            document.querySelector('.flex :nth-child(3)').className = ''
-            document.querySelector('.flex :nth-child(4)').className = ''
-            document.querySelector('.flex :nth-child(1)').className = ''
-            rate = 5
-        })
+        let rating
+        const flex = document.querySelector('.flex')
+        for (let i = 0; i < 5; i++) {
+            const rateBtn = document.createElement('div')
+            rateBtn.textContent = i + 1
+            flex.appendChild(rateBtn)
+            rateBtn.addEventListener('click', () => {
+                const children = flex.querySelectorAll('div')
+                for (let a = 0; a < 5; a++) {
+                    children[a].className = ''
+                }
+                children[i].className = 'selected'
+                rating = i + 1
+            })
+        }
         submit.addEventListener('click', () => {
-            document.querySelector('.rated').style.display = 'block'
-            rateN.textContent = rate
+            if (rating != null) {
+                document.querySelector('.rated').style.display = 'block'
+                rateN.textContent = rating
+            }
         })
     </script>
     <!-- Rating state end -->
@@ -231,7 +201,7 @@
 
 
     <div class="attribution">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Your Name Here</a>.
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">AmarsaikhanBE</a>.
     </div>
 </body>
 
